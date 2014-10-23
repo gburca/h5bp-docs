@@ -35,7 +35,7 @@ npm link will install dependencies defined in package.json and create a globally
     git clone git://github.com/user/project.wiki.git wikis/project
     h5bp-docs --src wikis/project --dest docs --verbose
     
-append `--server` flag to start a static server that will host the generated directory. `--baseurl` allows you to change the location where you'd like to test things locally (localhost:4000/docs/ or localhost:4000/wikis/ for example)
+append `--server` flag to start a static server that will host the generated directory. `--serveUrl` allows you to change the location where you'd like to test things locally (localhost:4000/docs/ or localhost:4000/wikis/ for example)
   
 
 ### Configuration
@@ -74,8 +74,11 @@ The following is a list of the currently supported configuration options. These 
   // How to replace the {{{ edit }}} placeholder. Must contain ":filename" somewhere.
   edit: '<a class="edit-page" href="http://github.com/h5bp/html5-boilerplate/wiki/:filename/_edit">Edit this page</a>',
   
-  // baseurl, only used with --server flag. ex: docs
+  // Used to prefix all links with some path. ex: "/"
   baseurl: '',
+
+  // When using the --server flag, this option is used to map the destination folder to the URL space.
+  serveUrl: '',
   
   // Enable verbose output (defaults false)
   verbose: false
@@ -99,7 +102,8 @@ Mustache.to_html(layout, {
 });
 ```
 
-* `assets`: the assets folder that gets copied to `/public/`.
+* `assetsDir`: the assets folder that gets copied to `/public/`.
+* `assetsFiles`: an array of individual files that gets copied to `/public/`.
     
 
 ### Dependencies
